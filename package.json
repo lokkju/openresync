@@ -2,6 +2,10 @@
   "name": "openresync",
   "version": "0.4.0",
   "private": true,
+  "engines": {
+    "node": ">=12.0.0 <13.0.0",
+    "npm": ">=6.0.0 <7.0.0"
+  },
   "scripts": {
     "dev": "TZ=UTC nodemon --watch server/ --watch lib/ --watch tests/qa/ --watch tests/fixtures/",
     "dev:debug": "TZ=UTC nodemon --inspect-brk --watch server/ --watch lib/",
@@ -31,6 +35,7 @@
     "concat-stream": "^2.0.0",
     "core-js": "^3.6.5",
     "cron": "^1.8.2",
+    "graphql": "^14.7.0",
     "graphql-scalars": "^1.9.0",
     "graphql-tag": "^2.11.0",
     "knex": "^0.21.12",

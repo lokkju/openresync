@@ -7,10 +7,9 @@ const currentYear = new Date().getFullYear()
 module.exports = {
   devServer: {
     port: 3461,
-    host: 'openresync.test',
     proxy: {
       '.*': {
-        target: 'http://openresync.test:' + config.server.port,
+        target: 'http://app:' + config.server.port,
         ws: true,
       },
     },

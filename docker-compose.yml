@@ -1,0 +1,51 @@
+version: "3.7"
+
+services:
+  app:
+    image: node:12-alpine
+    command: sh -c "npm install && npm run dev"
+    ports:
+      - 4000:4000
+    working_dir: /app
+    volumes:
+      - ./:/app
+    environment:
+      BRIDGE_INTERACTIVE_ACCESS_TOKEN: ${BRIDGE_INTERACTIVE_ACCESS_TOKEN}
+    depends_on:
+      - mysql
+
+  vue:
+    image: node:12-alpine
+    command: sh -c "npm run serve"
+    ports:
+      - 3461:3461
+    working_dir: /app
+    volumes:
+      - ./:/app
+    depends_on:
+      - app
+
+  mysql:
+    image: mysql:8
+    volumes:
+      - mysql-data:/var/lib/mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: password1
+      MYSQL_USER: listings
+      MYSQL_PASSWORD: password1
+      MYSQL_DATABASE: listings
+
+#  pg_chamelion:
+#    image: kivra/pg_chameleon:latest
+#    volumes:
+#      - ./docker/pg_chameleon_config.beewo.yml:/root/.pg_chameleon/configuration/beewo_config.yml
+#    command:
+#      - start_replica
+#      - --config beewo_config
+#    depends_on:
+#      - mysql
+
+volumes:
+  mysql-data:
