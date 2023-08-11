@@ -13,6 +13,10 @@
     "build-storybook": "build-storybook",
     "qa-server": "TZ=UTC nodemon --watch tests/qa/ --watch tests/fixtures/ --watch lib/ tests/qa/server/index.js"
   },
+  "engines": {
+    "node": "~18.17.1",
+    "npm": "~9.6.7"
+  },
   "main": "server/index.js",
   "dependencies": {
     "@graphql-tools/schema": "^7.1.3",
